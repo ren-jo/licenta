@@ -1,0 +1,21 @@
+<div *ngIf="authenticated()">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <img [src]="'/assets/images/LOGO.jpg'">
+        <h2>AnnoGUI</h2>
+        <div *ngFor="let menuItem of sideNav">
+            <a mat-button [routerLink]="menuItem.route"><h3>{{menuItem.displayText}}</h3></a>
+        </div>
+
+        <div id="udata">
+          <h2>Welcome, {{this.user.name}}</h2>
+          <button mat-raised-button class="logout-button" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>Log out
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+<!--Activeaza componentele in momentul navigatiei (in loc de un selector de aplicatie)-->
+<router-outlet></router-outlet>

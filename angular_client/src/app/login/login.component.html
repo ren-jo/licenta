@@ -1,0 +1,24 @@
+<div [class]="isLoading ? 'faded' : ''">
+  <mat-card class="mat-elevation-z4">
+    <mat-card-content>
+      <mat-card-title align="center">AnnoGUI</mat-card-title>
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Username" class="form-control" formControlName="username"
+                 data-qa="username" [readonly]="isLoading">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" class="form-control" formControlName="password"
+                 data-qa="password" [readonly]="isLoading">
+        </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" data-qa="login-button" [disabled]="isLoading">Login
+          </button>
+        <div class="mat-error error-login" *ngIf="errorMessage && !isLoading">{{errorText}}</div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<button mat-raised-button color="accent" [disabled]="isLoading" id="register" (click)="register()">Register</button>
+
+<mat-spinner [diameter]="40" *ngIf="isLoading"></mat-spinner>

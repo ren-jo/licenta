@@ -1,0 +1,77 @@
+<div id="filtering">
+  <h2>{{this.projectEntity.name}}</h2>
+  <mat-form-field>
+    <mat-label>Filter by</mat-label>
+    <mat-select #filterBy>
+      <mat-option [value]="'publishedby'">Published By</mat-option>
+      <mat-option [value]="'imagename'">Image name</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput (keypress)="filterImagesByPublished($event.target.value, filterBy.value)">
+  </mat-form-field>
+
+</div>
+
+<div class="example-container">
+  <table mat-table [dataSource]="this.selectedImages" class="mat-elevation-z8" *ngIf="this.projectEntity.images.length>0">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef> Select all
+        <mat-checkbox (change)="masterToggle()"
+                      [checked]="isAllSelected() "
+                      [indeterminate]="!isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let i = index ">
+        <mat-checkbox (change)="checkImage(i)"
+                      [checked]="this.sendImages[i].checked">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="image-name">
+      <th mat-header-cell *matHeaderCellDef> Image name </th>
+      <td mat-cell *matCellDef="let element" (click)="showImage(element.data)"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="posted-by">
+      <th mat-header-cell *matHeaderCellDef> Posted By </th>
+      <td mat-cell *matCellDef="let element"> {{element.postedBy}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="verified">
+      <th mat-header-cell *matHeaderCellDef> Verified </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.isVerified"><mat-icon>done_outline</mat-icon></div>
+        <div *ngIf="!element.isVerified"><mat-icon>error_outline</mat-icon></div>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element; let i=index ">
+        <button mat-raised-button (click)="deleteImage(i)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div id="buttons">
+  <button mat-flat-button color="primary" (click)="openUserModal()" class="upload-button" [disabled]="this.user.id!=this.projectEntity.userId">Manage users</button>
+
+  <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="imageInputChange($event)" accept=".jpg" multiple="multiple"/>
+  <button mat-flat-button color="primary" (click)="imageInput.click()" class="upload-button">Choose image File (jpg)</button>
+
+  <button mat-flat-button color="primary" [disabled]="!isOneSelected()" (click)="annotateImages()">Begin annotation</button>
+</div>

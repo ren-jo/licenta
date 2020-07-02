@@ -1,0 +1,90 @@
+<script src="src/assets/js/angular-canvas-area-draw.js"></script>
+<script src="src/assets/js/draw_script.js"></script>
+
+<mat-spinner [diameter]="40" *ngIf="isLoading"></mat-spinner>
+
+<div id="sectionBlocks" *ngIf="!isLoading">
+
+  <section class="image_selection">
+    <mat-grid-list cols="1" rowHeight="150px">
+      <mat-grid-tile
+        *ngFor="let entity of imageEntities">
+        <img [src]="this.convertImage(entity.data)" (click)="changeImage(entity)">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section class="image_annotation">
+    <div #areaDraw="canvasAreaDraw"
+         [canvasAreaDraw]="this.convertImage(this.selectedImage.data)"
+         [defaultPaths]="defaults"
+         [defaultActivePathIndex]="1"
+         [allowDelete]="allowDelete"
+         [notifyWhileMoving]="updateWhileMoving"
+         [strokeColor]="strokeColor"
+         [fillColor]="fillColor"
+         [handlerFillColor]="handlerFillColor"
+         [handlerStrokeColor]="handlerStrokeColor"
+         (pathAdded)="onAddPath()"
+         (pathDeleted)="onDeletePath($event)"
+         (activePathChange)="saveCurrentSelectionToObject()"
+         id="canvasDraw">
+
+    </div>
+
+  </section>
+    <section class="section_class" [style.display]="'block'">
+      <mat-list>
+        <mat-list-item>
+        <h2>Annotator</h2>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <br>
+      <h4>Label to be selected</h4>
+      <mat-label></mat-label>
+      <mat-form-field>
+        <mat-label>Label list</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let label of labelList" [value]="label" (click)="selectLabel(label)">
+            {{label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button (click)="newLabel()">Add new label</button>
+
+      <br>
+      <h4>Chose your drawing method</h4>
+      <mat-form-field>
+        <mat-label>Drawing methods</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let drawing of drawingList" [value]="drawing" (click)="selectDrawing(drawing)">
+            {{drawing}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button  mat-raised-button (click)="addDrawingAnnotation()">Add selector</button>
+      <div class="buttonArea">
+        <button mat-button (click)="clearSelection()" [disabled]="this.imageAnnotations.get(this.selectedImage.id).annotations.length==0">Clear selection</button>
+        <br>
+        <br>
+        <button mat-raised-button (click)="saveData()" [disabled]="!allowExportPersist">Save project data</button>
+      </div>
+
+      <br>
+      <mat-checkbox (change)="changeVerifyStatus()" [checked]="this.selectedImage.isVerified">Frame verified</mat-checkbox>
+      <br>
+      <br>
+      <div class="export">
+        <button mat-raised-button (click)="exportToXML()" [disabled]="!allowExportPersist">Export To XML</button>
+      </div>
+
+    </section>
+</div>
+
+
+
+
+
+

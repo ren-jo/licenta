@@ -1,0 +1,41 @@
+<section>
+
+<mat-selection-list id="categories">
+  <mat-list-item>
+    <h4>Categories</h4>
+    <button mat-raised-button class="addTopic" (click)="openCreateCategory()">
+      <mat-icon>add</mat-icon>
+      Add category
+    </button>
+  </mat-list-item>
+  <mat-list-option *ngFor="let categ of categories, index as i" (click)="changeSelectedStatus(i)">
+    <h3>{{categ.name}}</h3>
+    <p>{{categ.description}}</p>
+  </mat-list-option>
+</mat-selection-list>
+
+  <mat-selection-list id="topics">
+    <mat-list-item>
+      <h4>Topics</h4>
+      <button mat-raised-button class="addTopic" (click)="openCreateTopic()">
+        <mat-icon>add</mat-icon>
+        Add topic
+      </button>
+    </mat-list-item>
+    <mat-list-option *ngFor="let topic of topics" class="topic" (click)="showTopicReplies(topic)" [style.height]="'100px'">
+      <div>
+       <div class="topicUser">
+          <mat-icon>person_pin</mat-icon>
+          <h5>{{topic.userName}}</h5>
+       </div>
+      <br/>
+        <div class="topicDescription">
+          <mat-icon>question_answer</mat-icon>
+          <p>{{topic.description}}</p>
+        </div>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+
+  <app-show-topic [topic]="selectedTopic" [hidden]="show" *ngIf="selectedTopic!=undefined"></app-show-topic>
+</section>

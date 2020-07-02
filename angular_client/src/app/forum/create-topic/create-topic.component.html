@@ -1,0 +1,32 @@
+<div mat-dialog-title>
+  <h2>Create topic</h2>
+</div>
+
+
+<div mat-dialog-content>
+  <div [style.display]="'inline-gride'">
+    <mat-form-field>
+      <mat-label>Choose category</mat-label>
+      <mat-select [(ngModel)]="topic.category">
+        <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="10"
+                #autosize="cdkTextareaAutosize" placeholder="Short description" [(ngModel)]="topic.description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+     <textarea matInput cdkTextareaAutosize
+               cdkAutosizeMinRows="1"
+               cdkAutosizeMaxRows="10"
+               #autosize="cdkTextareaAutosize" placeholder="Description of the problem" [(ngModel)]="topic.fullDescription"></textarea>
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions [style.margin-top]="'120px'">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button class="mat-primary" cdkFocusInitial (click)="onConfirm()">Confirm</button>
+</div>

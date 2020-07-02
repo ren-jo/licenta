@@ -1,0 +1,31 @@
+<h2>Projects</h2>
+<br/>
+  <button mat-button id="addProject" (click)="openProjectModal()">Create project</button>
+
+<table mat-table [dataSource]="this.myProjects" class="mat-elevation-z8" *ngIf="myProjects!=undefined">
+  <ng-container matColumnDef="proj-name">
+    <th mat-header-cell *matHeaderCellDef> Project name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="no-images">
+    <th mat-header-cell *matHeaderCellDef> Number of images </th>
+    <td mat-cell *matCellDef="let element"> {{element.images.length}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="created-by-user">
+    <th mat-header-cell *matHeaderCellDef> Created by user </th>
+    <td mat-cell *matCellDef="let element"> {{element.createdByUser}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button [disabled]="element.userIDsAllowed.indexOf(this.userId)==-1" (click)="editProject(element.id)">Edit</button>
+      <button mat-raised-button [disabled]="element.userIDsAllowed.indexOf(this.userId)==-1" (click)="deleteProject(element.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

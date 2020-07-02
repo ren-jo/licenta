@@ -1,0 +1,16 @@
+<div mat-dialog-title>Add a new project</div>
+<div>
+  <mat-panel-title>
+    New project
+  </mat-panel-title>
+  <mat-form-field>
+    <mat-label>Type your project name here</mat-label>
+    <input matInput #projectName>
+  </mat-form-field>
+  <br>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="createProject(projectName.value)" [disabled]="this.projectName.value==''">Confirm</button>
+    <button mat-raised-button (click)="this.dialogRef.close()">Cancel</button>
+  </div>
+
+</div>

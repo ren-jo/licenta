@@ -1,0 +1,59 @@
+<section>
+  <div class="topicUser">
+    <mat-icon>person_pin</mat-icon>
+    <h3>{{topic.userName}}</h3>
+  </div>
+
+  <p>{{topic.fullDescription}}</p>
+  <h4>Replies</h4>
+
+  <mat-expansion-panel [(expanded)]="expanded">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div [style.margin-top]="'3px'">
+        Add reply
+        </div>
+      </mat-panel-title>
+      <mat-panel-description>
+        <div [style.margin-top]="'3px'">
+        Type your reply to the topic
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+   <div>
+     <div>
+        <mat-form-field>
+          <textarea matInput cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    #autosize="cdkTextareaAutosize" placeholder="Reply" [(ngModel)]="reply.content"></textarea>
+        </mat-form-field>
+     </div>
+     <button mat-raised-button [style.margin-left]="'300px'" (click)="closePanel()">Confirm</button>
+   </div>
+
+  </mat-expansion-panel>
+
+  <mat-list *ngFor="let reply of topic.replies">
+    <mat-list-item>
+      <div [style.display]="'inline-block'">
+        <div class="topicUser">
+          <mat-icon>person_pin</mat-icon>
+          <h3>{{reply.username}}</h3>
+        </div>
+        <p>{{reply.content}}</p>
+        <button #likeButton mat-raised-button class="like" (click)="like(reply,likeButton,dislikeButton)">
+          <mat-icon>thumb_up_alt</mat-icon>
+          {{reply.likes}}
+          Likes
+        </button>
+        <button #dislikeButton mat-raised-button class="like" (click)="dislike(reply,likeButton,dislikeButton)">
+          <mat-icon>thumb_down_alt</mat-icon> {{reply.dislikes}}
+          Dislikes
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+</section>

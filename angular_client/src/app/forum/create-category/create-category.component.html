@@ -1,0 +1,26 @@
+<div mat-dialog-title>
+  <h2>Create category</h2>
+</div>
+
+
+<div mat-dialog-content>
+  <div [style.display]="'inline-block'">
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="10"
+                #autosize="cdkTextareaAutosize" placeholder="Name" [(ngModel)]="category.name"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+     <textarea matInput cdkTextareaAutosize
+               cdkAutosizeMinRows="1"
+               cdkAutosizeMaxRows="10"
+               #autosize="cdkTextareaAutosize" placeholder="Description of the category" [(ngModel)]="category.description"></textarea>
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions [style.margin-top]="'120px'">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button class="mat-primary" cdkFocusInitial (click)="onConfirm()">Confirm</button>
+</div>

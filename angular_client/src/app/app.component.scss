@@ -1,0 +1,66 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$app-primary: mat-palette($mat-indigo);
+$app-accent:  mat-palette($mat-pink);
+$app-warn:    mat-palette($mat-red);
+
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  background: $primary;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+a {
+  width: 100%;
+  text-align: left;
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+
+mat-list-item {
+  margin-bottom: 16px;
+}
+
+
+.logout-button {
+  margin: 0;
+  padding: 8px 0;
+  font-weight: bold;
+  color: $primary;
+  width:125px;
+
+}
+
+
+img{
+  max-width: 50px;
+  max-height: 50px;
+  margin-right:10px;
+}
+
+#udata{
+  margin-left:40%;
+  display:inline-flex;
+}
+
+#udata h2{
+  margin-top:10px;
+  margin-right:20px;
+}
+
+mat-toolbar{
+  background: darkslateblue;
+}

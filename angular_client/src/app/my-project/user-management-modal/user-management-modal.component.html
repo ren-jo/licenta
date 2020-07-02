@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Current users in project - tick to add more</h1>
+<div mat-dialog-content>
+<table mat-table [dataSource]="usersPlusChecked" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="user_name">
+    <th mat-header-cell *matHeaderCellDef> User name </th>
+    <td mat-cell *matCellDef="let element">{{element.user.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="in_project">
+    <th mat-header-cell *matHeaderCellDef> In project </th>
+    <td mat-cell *matCellDef="let element; let i = index "> <mat-checkbox [checked]="element.inProject" (change)="checkUser(i)"></mat-checkbox> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+</div>
+
+<div mat-dialog-actions [style.display]="'inline-flex'" [style.float]="'right'" >
+  <button mat-flat-button (click)="this.dialogRef.close()"> Cancel </button>
+  <button mat-flat-button (click)="confirmProjectChanges()"> Confirm </button>
+</div>

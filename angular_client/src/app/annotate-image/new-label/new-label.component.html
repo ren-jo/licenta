@@ -1,0 +1,16 @@
+<div mat-dialog-title>Add a new label</div>
+<div>
+ <mat-panel-title>
+      New label
+    </mat-panel-title>
+  <mat-form-field>
+    <mat-label>Type your label here</mat-label>
+    <input matInput #labelName>
+  </mat-form-field>
+  <br>
+  <div mat-dialog-actions>
+      <button mat-raised-button (click)="addLabel(this.labelName)" [disabled]="this.labelName.value==''">Confirm</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+</div>
+
+</div>

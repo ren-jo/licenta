@@ -1,0 +1,20 @@
+<mat-card class="mat-elevation-z4">
+  <mat-card-content>
+    <mat-card-title>Register user</mat-card-title>
+    <form class="login-form" [formGroup]="registerForm" (ngSubmit)="confirmRegister()">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Username" class="form-control" formControlName="username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Display name" class="form-control" formControlName="user_name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" class="form-control" formControlName="password">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" class="form-control" formControlName="email">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" data-qa="login-button">Confirm</button>
+    </form>
+  </mat-card-content>
+</mat-card>

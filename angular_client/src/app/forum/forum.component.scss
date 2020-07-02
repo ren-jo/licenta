@@ -1,0 +1,70 @@
+mat-selection-list{
+  width:400px;
+  padding: 0 0 0 10px;
+}
+
+mat-list-option{
+  height:max-content;
+}
+
+.topic{
+  height:130px;
+}
+
+.topic:focus{
+  background-color:lightslategray;
+}
+
+.topic ::ng-deep.mat-pseudo-checkbox{
+  display:none;
+}
+section{
+  display:inline-flex;
+  margin-top:5%;
+  margin-left:5%;
+  height:60%;
+  width:90%;
+}
+
+.addTopic{
+  margin-left:20px;
+}
+
+.topicUser{
+  display:inline-flex;
+}
+
+.topicUser mat-icon{
+  margin-right:5px;
+  margin-top:7px;
+}
+
+.topicDescription{
+  display:inline-flex;
+}
+
+.topicDescription mat-icon{
+  margin-right:5px;
+  margin-top:7px;
+}
+
+.mat-list-item-ripple{
+  height:max-content;
+}
+
+.mat-list-item-content{
+  height:max-content;
+}
+
+app-show-topic{
+  margin-left:30px;
+  width:600px;
+}
+
+.mat-list-text{
+  height:max-content;
+}
+
+#topics{
+  width:600px;
+}

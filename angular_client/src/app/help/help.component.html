@@ -1,0 +1,103 @@
+
+<div>
+<H2>How to use our platform</H2>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          How to create a project
+        </mat-panel-title>
+        <mat-panel-description>
+          Create your own project and manage users
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h4>Create project</h4>
+      <p> To create your own project, you'll have to click on "Project" page found in the menu aboove.</p>
+      <h5>
+          Step 1: Open the create project modal
+      </h5>
+      <p>By clicking on the "Create project" button right under the top of the page you will open a new model where you can create your project.</p>
+      <h5>
+          Step 2: Chose the name you want
+      </h5>
+      <p>The name you will chose will appear in the table of projects right after you confirm by clicking the "Confirm" button. </p>
+      <h5>
+        Step 3: Manage users
+    </h5>
+    <p>
+      As an admin you will be able to manage the users you want to be part of your project. To do that, you'll have to press the "Manage users" button, at the botton of your project.
+    </p>
+    </mat-expansion-panel>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            How to annotate an image
+          </mat-panel-title>
+          <mat-panel-description>
+            Annotate your images step by step
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h4>Create project</h4>
+        <p> First, you will have to be in one of your projects. </p>
+        <h5>
+            Step 1: Upload your images
+        </h5>
+        <p>In your project, you can upload your images by clicking on "Chose Image(.JPG)" button. You will be able to upload only .JPG images.</p>
+        <h5>
+            Step 2: Select your images and press the BIGIN ANNOTATION button
+        </h5>
+        <p>You can select the image/images you want to annotate by checking the "Select all" checkbox( this will select all your images) or by checkin on individual images one by one.</p>
+        <p> You also have the posibility to filter your images by name or by user.</p>
+        <h5>
+            Step 3: Chose your label
+        </h5>
+        <p> You can chose between one of the default labels our platform provides by clicking on the "Label list" accordion. </p>
+        <img src = "../assets/images/pas2.png" width="1100" height="560" style="align-self:auto">
+        <h5>
+            Step 4: Chose your drawing method
+        </h5>
+        <p>You will need to chose between 2 drawing methods: Polygon and Bounding Box. Chosing the polygon you will be able to drow more freely and chosing the boundig box this one will appear</p>
+        <p> on your image. You will be able to move it and resize it wharever you want.</p>
+        <img src = "../assets/images/pas3.png" width="1100" height="560" style="align-self:auto">
+        <h5>
+            Step 5: Save your work/ delete your annotations
+        </h5>
+        <p>After placing your bounding boxes/polygons (as in the picture below) you will be able to save your work by pressing the "Save annotation button. This button will save your work so you </p>
+        <p>won't lose it. If you want to delete an annotation, you only have to click right on it. If you want to delete all your annotations from the current imege, you can click the </p>
+        <p>"Clear selection" button.</p>
+        <img src = "../assets/images/pas4.png" width="1100" height="560" style="align-self:auto">
+        <h5>
+            Step 6: Add your own label
+        </h5>
+        <p>If you want to create your own labels you can easily do that by clicking on "Add new label" button. This will open a new modal window where you can write your new label's name. After</p>
+        <p>pressing the "Confirm" button you will find your new label in the labels list.</p>
+        <img src = "../assets/images/pas5.png" width="1100" height="560" style="align-self:auto">
+        <h5>
+            Step 7: Mark as verified 
+        </h5>
+        <p>
+          If you want to inform your colleges that the image you annotated is verified, all you have to do is check the "Frame verified" checkbox a verified icon will appear in the table of images.
+        </p>
+        <img src = "../assets/images/pas6.png" width="200" height="90" style="align-self:auto">
+        <h5>
+            Step 8: Export XML file
+        </h5>
+        <img src = "../assets/images/pas7.png" width="1100" height="560" style="align-self:auto">
+      </mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            How to read your XML file properly
+          </mat-panel-title>
+          <mat-panel-description>
+            Learn to read your XML file
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h4>XML files</h4>
+        <p>To read you XML all you have to know is that an image annotation is made from an image id (multiple if you chose to generate the XML for all your images), this image id contains an annotation</p>
+        <p>where you can see you labels and the coordinates as shown below</p>
+        <img src = "../assets/images/xml1.png"> <img src = "../assets/images/xml2.png"> 
+      </mat-expansion-panel>
+
+  </mat-accordion>
+</div>
